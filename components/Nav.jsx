@@ -40,7 +40,7 @@ export default function Nav() {
               <path d="M10 13h6M13 10v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
           </div>
-          <span className="text-navy font-semibold text-lg tracking-tight">Planflo</span>
+          <span className="text-navy font-semibold text-lg tracking-tight">Quoflow</span>
         </a>
 
         {/* Desktop links */}

@@ -23,7 +23,7 @@ export default function Footer() {
                   <path d="M10 13h6M13 10v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-white font-semibold text-lg tracking-tight">PlanFlow</span>
+              <span className="text-white font-semibold text-lg tracking-tight">Quoflow</span>
             </a>
             <p className="text-white/40 text-sm">AI-powered portals for the trades industry</p>
           </div>
@@ -44,7 +44,7 @@ export default function Footer() {
 
         {/* Divider */}
         <div className="mt-10 pt-6 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/30">
-          <span>© 2026 PlanFlow. Built in New Zealand.</span>
+          <span>© 2026 Quoflow. Built in New Zealand.</span>
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             All systems operational

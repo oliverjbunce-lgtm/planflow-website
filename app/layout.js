@@ -1,24 +1,24 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Planflo — AI Floor Plan Analysis & Trade Portal',
+  title: 'Quoflow — AI Floor Plan Analysis & Trade Portal',
   description:
-    'Planflo uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
-  metadataBase: new URL('https://planflo.ai'),
+    'Quoflow uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
+  metadataBase: new URL('https://quoflow.co.nz'),
   openGraph: {
-    title: 'Planflo — AI Floor Plan Analysis & Trade Portal',
+    title: 'Quoflow — AI Floor Plan Analysis & Trade Portal',
     description:
-      'Planflo uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
-    url: 'https://planflo.ai',
-    siteName: 'Planflo',
+      'Quoflow uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
+    url: 'https://quoflow.co.nz',
+    siteName: 'Quoflow',
     locale: 'en_NZ',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Planflo — AI Floor Plan Analysis & Trade Portal',
+    title: 'Quoflow — AI Floor Plan Analysis & Trade Portal',
     description:
-      'Planflo uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
+      'Quoflow uses AI to analyse building plans, detect door types, and streamline order management for NZ building supply businesses.',
   },
 }
 

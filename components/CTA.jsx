@@ -28,13 +28,13 @@ export default function CTA() {
           </h2>
 
           <p className="mt-5 text-lg text-navy/55 leading-relaxed">
-            Book a demo and see Planflo running with your own floor plans.
+            Book a demo and see Quoflow running with your own floor plans.
             No commitment — just a live look at what AI can do for your business.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <a
-              href="mailto:demo@planflo.ai"
+              href="mailto:demo@quoflow.co.nz"
               className="inline-flex items-center gap-2.5 bg-sky text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-sky-dark transition-all shadow-xl shadow-sky/25 hover:shadow-sky/40 hover:-translate-y-0.5"
             >
               Book a Demo
@@ -46,8 +46,8 @@ export default function CTA() {
 
           <p className="mt-5 text-sm text-navy/35">
             Or email us at{' '}
-            <a href="mailto:hello@planflo.ai" className="text-sky hover:underline">
-              hello@planflo.ai
+            <a href="mailto:hello@quoflow.co.nz" className="text-sky hover:underline">
+              hello@quoflow.co.nz
             </a>
           </p>
         </motion.div>

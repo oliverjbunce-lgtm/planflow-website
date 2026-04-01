@@ -46,7 +46,7 @@ export default function Stats() {
             Built around real results
           </h2>
           <p className="mt-2 text-white/50 text-base">
-            Planflo is engineered for the NZ building supply market.
+            Quoflow is engineered for the NZ building supply market.
           </p>
         </motion.div>
 

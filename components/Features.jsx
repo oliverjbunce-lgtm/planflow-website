@@ -69,7 +69,7 @@ export default function Features() {
             Everything you need, nothing you don't
           </h2>
           <p className="mt-4 text-lg text-navy/55 max-w-xl mx-auto">
-            Planflo is purpose-built for building supply merchants and their trade customers.
+            Quoflow is purpose-built for building supply merchants and their trade customers.
           </p>
         </motion.div>
 
