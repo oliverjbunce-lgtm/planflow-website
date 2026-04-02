@@ -1,191 +1,183 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
-function FloatingShape({ className, delay = 0, duration = 8 }) {
+function DashboardMockup() {
   return (
-    <motion.div
-      className={`absolute rounded-full opacity-40 blur-3xl ${className}`}
-      animate={{
-        y: [0, -30, 0],
-        x: [0, 15, 0],
-        scale: [1, 1.05, 1],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-    />
-  )
-}
+    <div className="relative w-full max-w-2xl mx-auto">
+      {/* Outer glow */}
+      <div className="absolute -inset-4 bg-sky/10 rounded-[2.5rem] blur-2xl" />
 
-function FloorPlanMockup() {
-  return (
-    <div className="relative w-full max-w-xl mx-auto">
-      {/* Device frame */}
-      <div className="relative bg-white rounded-2xl shadow-2xl shadow-navy/15 border border-navy/10 overflow-hidden">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-gray-50 border-b border-gray-100">
+      {/* Main glass panel */}
+      <div className="relative backdrop-blur-xl bg-white/80 border border-white/60 shadow-2xl rounded-3xl overflow-hidden">
+        {/* Titlebar */}
+        <div className="flex items-center gap-2 px-5 py-4 border-b border-zinc-100/80 bg-white/60 backdrop-blur-sm">
           <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-400" />
-            <div className="w-3 h-3 rounded-full bg-yellow-400" />
-            <div className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="w-3 h-3 rounded-full bg-red-400/80" />
+            <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+            <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
           </div>
-          <div className="flex-1 mx-3 bg-white rounded-md px-3 py-1 text-xs text-gray-400 border border-gray-200">
-            app.quoflow.co.nz/analysis
+          <div className="flex-1 mx-4 bg-zinc-100/80 rounded-lg px-3 py-1.5 text-xs text-zinc-400 font-medium">
+            app.quoflow.co.nz/dashboard
           </div>
+          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
         </div>
 
-        {/* Floor plan canvas */}
-        <div className="relative bg-gray-50 p-4" style={{ height: '280px' }}>
-          {/* Grid overlay */}
-          <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#007AFF" strokeWidth="0.3"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-
-          {/* Floor plan walls */}
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
-            {/* Outer walls */}
-            <rect x="40" y="30" width="320" height="220" fill="none" stroke="#0b1f33" strokeWidth="3"/>
-            {/* Interior walls */}
-            <line x1="200" y1="30" x2="200" y2="140" stroke="#0b1f33" strokeWidth="2"/>
-            <line x1="120" y1="140" x2="360" y2="140" stroke="#0b1f33" strokeWidth="2"/>
-            <line x1="120" y1="140" x2="120" y2="250" stroke="#0b1f33" strokeWidth="2"/>
-            <line x1="280" y1="140" x2="280" y2="250" stroke="#0b1f33" strokeWidth="2"/>
-
-            {/* Room labels */}
-            <text x="100" y="90" fill="#0b1f33" fontSize="10" opacity="0.5" textAnchor="middle">Living</text>
-            <text x="290" y="90" fill="#0b1f33" fontSize="10" opacity="0.5" textAnchor="middle">Bedroom 1</text>
-            <text x="78" y="200" fill="#0b1f33" fontSize="9" opacity="0.5" textAnchor="middle">Bath</text>
-            <text x="200" y="200" fill="#0b1f33" fontSize="10" opacity="0.5" textAnchor="middle">Kitchen</text>
-            <text x="320" y="200" fill="#0b1f33" fontSize="10" opacity="0.5" textAnchor="middle">Bedroom 2</text>
-          </svg>
-
-          {/* AI Detection bounding boxes */}
-          <motion.div
-            className="absolute"
-            style={{ left: '26%', top: '8%', width: '36px', height: '36px' }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.4 }}
-          >
-            <div className="w-full h-full border-2 border-sky rounded-sm relative">
-              <div className="absolute -top-5 left-0 bg-sky text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Window • 95%
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute"
-            style={{ left: '55%', top: '8%', width: '36px', height: '36px' }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.4 }}
-          >
-            <div className="w-full h-full border-2 border-emerald-500 rounded-sm relative">
-              <div className="absolute -top-5 left-0 bg-emerald-500 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Sliding Door • 92%
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute"
-            style={{ left: '15%', top: '52%', width: '32px', height: '32px' }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.1, duration: 0.4 }}
-          >
-            <div className="w-full h-full border-2 border-sky rounded-sm relative">
-              <div className="absolute -top-5 left-0 bg-sky text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Cavity Slider • 97%
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="absolute"
-            style={{ left: '65%', top: '52%', width: '32px', height: '32px' }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.4, duration: 0.4 }}
-          >
-            <div className="w-full h-full border-2 border-violet-500 rounded-sm relative">
-              <div className="absolute -top-5 left-0 bg-violet-500 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Frame • 89%
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Scan line animation */}
-          <motion.div
-            className="absolute left-0 right-0 h-0.5 bg-sky/40"
-            style={{ top: 0 }}
-            animate={{ top: ['8%', '92%', '8%'] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 1.8 }}
-          />
-        </div>
-
-        {/* Status bar */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-white border-t border-gray-100">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs text-gray-500 font-medium">AI analysing floor_plan_v2.pdf</span>
+        {/* Dashboard content */}
+        <div className="p-5 bg-zinc-50/40">
+          {/* Stat row */}
+          <div className="grid grid-cols-4 gap-3 mb-5">
+            {[
+              { label: 'Plans This Month', value: '24' },
+              { label: 'Pending Quotes', value: '6' },
+              { label: 'Components Found', value: '342' },
+              { label: 'Quotes Approved', value: '18' },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className="backdrop-blur-sm bg-white/80 border border-white/60 rounded-2xl p-3 shadow-sm"
+              >
+                <div className="text-xl font-bold text-navy">{stat.value}</div>
+                <div className="text-[10px] text-navy/40 mt-0.5 leading-tight">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
-          <span className="text-xs font-semibold text-sky">4 detections</span>
+
+          {/* Main area: floor plan + quote */}
+          <div className="grid grid-cols-5 gap-3">
+            {/* Floor plan panel */}
+            <div className="col-span-3 backdrop-blur-sm bg-white/80 border border-white/60 rounded-2xl p-4 shadow-sm">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold text-navy">floor_plan_v3.pdf</span>
+                <span className="text-[10px] bg-sky/10 text-sky px-2 py-0.5 rounded-full font-semibold">AI Analysing</span>
+              </div>
+              {/* Floor plan SVG */}
+              <div className="relative bg-zinc-50 rounded-xl overflow-hidden" style={{ height: '140px' }}>
+                <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+                  <defs><pattern id="g2" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M 16 0 L 0 0 0 16" fill="none" stroke="#007AFF" strokeWidth="0.4"/></pattern></defs>
+                  <rect width="100%" height="100%" fill="url(#g2)" />
+                </svg>
+                <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 140">
+                  <rect x="20" y="10" width="260" height="120" fill="none" stroke="#0b1f33" strokeWidth="2.5"/>
+                  <line x1="150" y1="10" x2="150" y2="80" stroke="#0b1f33" strokeWidth="1.5"/>
+                  <line x1="80" y1="80" x2="280" y2="80" stroke="#0b1f33" strokeWidth="1.5"/>
+                  <line x1="80" y1="80" x2="80" y2="130" stroke="#0b1f33" strokeWidth="1.5"/>
+                  <line x1="210" y1="80" x2="210" y2="130" stroke="#0b1f33" strokeWidth="1.5"/>
+                </svg>
+                {/* Detection boxes */}
+                {[
+                  { x: '22%', y: '8%', label: 'Window', color: '#007AFF', delay: 0.6 },
+                  { x: '52%', y: '8%', label: 'Sliding Door', color: '#10b981', delay: 0.8 },
+                  { x: '12%', y: '62%', label: 'Hinged', color: '#007AFF', delay: 1.0 },
+                  { x: '62%', y: '62%', label: 'Cavity', color: '#8b5cf6', delay: 1.2 },
+                ].map((box) => (
+                  <motion.div
+                    key={box.label}
+                    className="absolute"
+                    style={{ left: box.x, top: box.y, width: '28px', height: '28px' }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: box.delay, duration: 0.3 }}
+                  >
+                    <div className="w-full h-full rounded-sm relative" style={{ border: `1.5px solid ${box.color}` }}>
+                      <div className="absolute -top-4 left-0 text-white text-[8px] px-1 py-0.5 rounded font-bold whitespace-nowrap" style={{ backgroundColor: box.color }}>
+                        {box.label}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+                {/* Scan line */}
+                <motion.div
+                  className="absolute left-0 right-0 h-px bg-sky/50"
+                  animate={{ top: ['8%', '92%', '8%'] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', delay: 1.5 }}
+                />
+              </div>
+              <div className="mt-2 flex items-center justify-between">
+                <span className="text-[10px] text-navy/40">4 components detected</span>
+                <span className="text-[10px] font-semibold text-emerald-600">98% confidence</span>
+              </div>
+            </div>
+
+            {/* Quote panel */}
+            <div className="col-span-2 backdrop-blur-sm bg-white/80 border border-white/60 rounded-2xl p-4 shadow-sm flex flex-col">
+              <div className="text-xs font-bold text-navy mb-3">Quote #Q-024</div>
+              <div className="space-y-2 flex-1">
+                {[
+                  { item: 'Cavity Sliders', qty: 3 },
+                  { item: 'Hinged Doors', qty: 8 },
+                  { item: 'Windows', qty: 4 },
+                ].map((line) => (
+                  <div key={line.item} className="flex items-center justify-between text-[10px]">
+                    <span className="text-navy/70">{line.item}</span>
+                    <span className="font-bold text-navy">×{line.qty}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 pt-3 border-t border-zinc-100">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="w-full bg-navy text-white text-[10px] font-bold py-2 rounded-xl"
+                >
+                  Approve Quote
+                </motion.button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Floating badge */}
+      {/* Floating notification badge */}
       <motion.div
-        className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg shadow-navy/10 border border-navy/8 px-4 py-3 flex items-center gap-3"
-        initial={{ opacity: 0, x: 20 }}
+        className="absolute -bottom-5 -left-5 backdrop-blur-xl bg-white/90 border border-white/60 shadow-xl rounded-2xl px-4 py-3 flex items-center gap-3"
+        initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.6, duration: 0.5 }}
+        transition={{ delay: 1.8, duration: 0.5 }}
       >
-        <div className="w-9 h-9 rounded-full bg-sky/10 flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M3 9l4 4 8-8" stroke="#007AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </div>
         <div>
-          <div className="text-xs font-bold text-navy">Order created</div>
-          <div className="text-xs text-navy/50">8 items detected</div>
+          <div className="text-[11px] font-bold text-navy">Quote sent to builder</div>
+          <div className="text-[10px] text-navy/40">just now</div>
         </div>
+      </motion.div>
+
+      {/* Floating AI badge */}
+      <motion.div
+        className="absolute -top-4 -right-4 backdrop-blur-xl bg-sky text-white shadow-xl shadow-sky/30 rounded-2xl px-3 py-2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.0, duration: 0.5 }}
+      >
+        <div className="text-[10px] font-bold">✦ AI Active</div>
       </motion.div>
     </div>
   )
 }
 
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Animated background shapes */}
-      <FloatingShape className="w-96 h-96 bg-sky/20 -top-20 -right-20" delay={0} duration={10} />
-      <FloatingShape className="w-64 h-64 bg-blue-200/30 top-1/3 -left-10" delay={2} duration={8} />
-      <FloatingShape className="w-80 h-80 bg-sky/10 bottom-10 right-1/4" delay={4} duration={12} />
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-16">
+      {/* Layered background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-sky-50/30 to-white" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-sky/6 blur-3xl -translate-y-1/2 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-blue-100/20 blur-3xl translate-y-1/2 -translate-x-1/4" />
 
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/30 to-white pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 w-full">
+      <motion.div style={{ y, opacity }} className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: copy */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 bg-sky/10 text-sky text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-sky animate-pulse" />
                 AI-powered for NZ & Australian trades
@@ -195,78 +187,63 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-navy leading-[1.1] tracking-tight text-balance"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-5xl md:text-6xl lg:text-[4rem] font-bold text-navy leading-[1.05] tracking-tight"
             >
-              The intelligent portal for building supply businesses
+              The platform<br />
+              <span className="text-sky">built for</span><br />
+              building supply
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="mt-6 text-lg text-navy/60 leading-relaxed max-w-xl"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-6 text-xl text-navy/55 leading-relaxed max-w-lg"
             >
-              AI analyses floor plans, identifies building components, and streamlines your entire order-to-quote workflow.
-              Built for NZ and Australian building supply businesses.
+              AI analyses floor plans, auto-detects building components, and streamlines your entire order-to-quote workflow.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
               className="mt-8 flex flex-wrap gap-3"
             >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-sky text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-sky-dark transition-all shadow-lg shadow-sky/25 hover:shadow-sky/40 hover:-translate-y-0.5"
-              >
+              <a href="#contact" className="inline-flex items-center gap-2 bg-sky text-white font-semibold px-7 py-4 rounded-2xl hover:bg-blue-600 transition-all shadow-xl shadow-sky/25 hover:-translate-y-0.5">
                 Book a Demo
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center gap-2 bg-navy/5 text-navy font-semibold px-6 py-3.5 rounded-xl hover:bg-navy/10 transition-all"
-              >
+              <a href="#how-it-works" className="inline-flex items-center gap-2 backdrop-blur-sm bg-white/80 border border-navy/10 text-navy font-semibold px-7 py-4 rounded-2xl hover:bg-white transition-all shadow-sm">
                 See How It Works
               </a>
             </motion.div>
 
-            {/* Trust signals */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
               className="mt-10 flex items-center gap-6 text-sm text-navy/40"
             >
-              <span className="flex items-center gap-1.5">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                No credit card required
-              </span>
-              <span className="flex items-center gap-1.5">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                Built for NZ trades
-              </span>
-              <span className="flex items-center gap-1.5">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                30-day trial
-              </span>
+              {['No credit card required', 'Built for NZ trades', '30-day trial'].map((t) => (
+                <span key={t} className="flex items-center gap-1.5">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l2.5 2.5 6.5-6.5" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {t}
+                </span>
+              ))}
             </motion.div>
           </div>
 
           {/* Right: mockup */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            initial={{ opacity: 0, x: 40, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
           >
-            <FloorPlanMockup />
+            <DashboardMockup />
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

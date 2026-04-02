@@ -53,7 +53,7 @@ export default function Features() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id="features" ref={ref} className="py-24 md:py-32">
+    <section id="features" ref={ref} className="py-24 md:py-32 relative"><div className="absolute inset-0 bg-gradient-to-b from-white via-sky-50/20 to-white pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Header */}
         <motion.div
@@ -81,7 +81,7 @@ export default function Features() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group relative bg-white rounded-2xl p-8 border border-navy/8 shadow-sm hover:shadow-md hover:border-sky/30 transition-all duration-300"
+              className="group relative backdrop-blur-sm bg-white/80 border border-white/60 shadow-sm hover:shadow-xl hover:shadow-sky/8 hover:-translate-y-1 rounded-3xl p-8 transition-all duration-300"
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-xl bg-sky/8 flex items-center justify-center mb-6 group-hover:bg-sky/14 transition-colors">

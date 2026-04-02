@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import PlatformPreview from '@/components/PlatformPreview'
 import Features from '@/components/Features'
 import Integrations from '@/components/Integrations'
 import HowItWorks from '@/components/HowItWorks'
@@ -13,6 +14,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <PlatformPreview />
         <Features />
         <Integrations />
         <HowItWorks />
