@@ -5,8 +5,8 @@ import { useInView } from 'react-intersection-observer'
 
 const logos = [
   'BuildCo NZ',
-  'Pacific Doors',
-  'Titan Supply',
+  'Pacific Supplies',
+  'Titan Building',
   'Southern Frames',
 ]
 

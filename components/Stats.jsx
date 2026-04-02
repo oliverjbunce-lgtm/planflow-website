@@ -11,10 +11,10 @@ const stats = [
     icon: '📐',
   },
   {
-    value: '12',
-    label: 'Door types detected',
-    sub: 'Hinged, sliding, bifold & more',
-    icon: '🚪',
+    value: '10+',
+    label: 'Product categories',
+    sub: 'Doors, windows, frames & more',
+    icon: '📦',
   },
   {
     value: 'Minutes',
@@ -24,8 +24,8 @@ const stats = [
   },
   {
     value: 'NZ-built',
-    label: 'For NZ construction',
-    sub: 'Residential floor plan trained',
+    label: 'For NZ trades',
+    sub: 'Trained on NZ building plans',
     icon: '🇳🇿',
   },
 ]

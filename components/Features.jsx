@@ -17,7 +17,7 @@ const features = [
       </svg>
     ),
     title: 'AI Floor Plan Analysis',
-    desc: 'Upload a building plan and AI automatically detects and counts every door type. Saves hours of manual take-offs.',
+    desc: 'Upload a building plan and AI automatically detects and counts building components. Saves hours of manual take-offs.',
     highlight: 'Saves hours of manual take-offs',
   },
   {

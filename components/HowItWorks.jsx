@@ -13,7 +13,7 @@ const steps = [
   {
     n: '02',
     title: 'AI detects all door types instantly',
-    desc: 'Our model scans every room and identifies door types — hinged, sliding, bifold, cavity, and more.',
+    desc: 'Our model scans every room and identifies building components — doors, windows, frames, and more.',
     color: 'from-violet-100/40 to-sky/20',
   },
   {

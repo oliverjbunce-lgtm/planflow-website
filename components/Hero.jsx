@@ -79,7 +79,7 @@ function FloorPlanMockup() {
           >
             <div className="w-full h-full border-2 border-sky rounded-sm relative">
               <div className="absolute -top-5 left-0 bg-sky text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Hinged • 95%
+                Window • 95%
               </div>
             </div>
           </motion.div>
@@ -93,7 +93,7 @@ function FloorPlanMockup() {
           >
             <div className="w-full h-full border-2 border-emerald-500 rounded-sm relative">
               <div className="absolute -top-5 left-0 bg-emerald-500 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Sliding • 92%
+                Sliding Door • 92%
               </div>
             </div>
           </motion.div>
@@ -107,7 +107,7 @@ function FloorPlanMockup() {
           >
             <div className="w-full h-full border-2 border-sky rounded-sm relative">
               <div className="absolute -top-5 left-0 bg-sky text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Hinged • 97%
+                Cavity Slider • 97%
               </div>
             </div>
           </motion.div>
@@ -121,7 +121,7 @@ function FloorPlanMockup() {
           >
             <div className="w-full h-full border-2 border-violet-500 rounded-sm relative">
               <div className="absolute -top-5 left-0 bg-violet-500 text-white text-[9px] px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">
-                Bifold • 89%
+                Frame • 89%
               </div>
             </div>
           </motion.div>
@@ -159,7 +159,7 @@ function FloorPlanMockup() {
         </div>
         <div>
           <div className="text-xs font-bold text-navy">Order created</div>
-          <div className="text-xs text-navy/50">12 doors detected</div>
+          <div className="text-xs text-navy/50">8 items detected</div>
         </div>
       </motion.div>
     </div>
@@ -207,8 +207,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="mt-6 text-lg text-navy/60 leading-relaxed max-w-xl"
             >
-              AI analyses floor plans, auto-detects door types, and streamlines your entire order-to-quote workflow.
-              Built for NZ and Australian trades.
+              AI analyses floor plans, identifies building components, and streamlines your entire order-to-quote workflow.
+              Built for NZ and Australian building supply businesses.
             </motion.p>
 
             <motion.div
@@ -247,7 +247,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                Built for NZ construction
+                Built for NZ trades
               </span>
               <span className="flex items-center gap-1.5">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3 3 7-7" stroke="#007AFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
