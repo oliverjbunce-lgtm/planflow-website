@@ -12,12 +12,6 @@ export default function Hero() {
       <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#0A84FF]/4 blur-[120px] pointer-events-none" />
       <motion.div style={{ y, opacity }} className="relative text-center max-w-5xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="mb-8">
-          <span className="inline-flex items-center gap-2 border border-black/8 bg-black/3 text-gray-500 text-xs font-semibold tracking-[0.18em] uppercase px-4 py-2 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0A84FF] animate-pulse" />
-            Now in early access
-          </span>
-        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
