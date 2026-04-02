@@ -8,6 +8,7 @@ import Integrations from '@/components/Integrations'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
+// v2 redesign - Quoflow
 export default function Page() {
   return (
     <>
