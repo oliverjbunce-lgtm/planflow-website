@@ -6,8 +6,8 @@ import { useState } from 'react'
 
 export default function CTA() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 })
-  const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', message: '' })
+  const [status, setStatus] = useState('idle')
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,7 +24,7 @@ export default function CTA() {
       })
       if (res.ok) {
         setStatus('success')
-        setForm({ name: '', email: '', company: '', message: '' })
+        setForm({ name: '', email: '', company: '', phone: '', message: '' })
       } else {
         setStatus('error')
       }
@@ -35,7 +35,6 @@ export default function CTA() {
 
   return (
     <section id="contact" ref={ref} className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-sky/8 via-white to-blue-50/50 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-sky/6 blur-3xl pointer-events-none" />
 
@@ -92,16 +91,29 @@ export default function CTA() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-navy mb-1.5">Company</label>
-            <input
-              type="text"
-              name="company"
-              value={form.company}
-              onChange={handleChange}
-              placeholder="Acme Building Supplies"
-              className="w-full px-4 py-3 rounded-xl border border-navy/12 text-navy placeholder-navy/30 text-sm focus:outline-none focus:ring-2 focus:ring-sky/40 focus:border-sky transition-all"
-            />
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label className="block text-sm font-semibold text-navy mb-1.5">Company</label>
+              <input
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                placeholder="Acme Building Supplies"
+                className="w-full px-4 py-3 rounded-xl border border-navy/12 text-navy placeholder-navy/30 text-sm focus:outline-none focus:ring-2 focus:ring-sky/40 focus:border-sky transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-navy mb-1.5">Phone</label>
+              <input
+                type="tel"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="+64 21 000 0000"
+                className="w-full px-4 py-3 rounded-xl border border-navy/12 text-navy placeholder-navy/30 text-sm focus:outline-none focus:ring-2 focus:ring-sky/40 focus:border-sky transition-all"
+              />
+            </div>
           </div>
 
           <div>

@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req) {
   try {
-    const { name, email, company, message } = await req.json()
+    const { name, email, company, phone, message } = await req.json()
 
     if (!name || !email) {
       return Response.json({ error: 'Name and email required' }, { status: 400 })
@@ -23,6 +23,7 @@ export async function POST(req) {
             <tr><td style="padding: 8px 0; font-weight: 600; width: 100px;">Name</td><td style="padding: 8px 0;">${name}</td></tr>
             <tr><td style="padding: 8px 0; font-weight: 600;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #007AFF;">${email}</a></td></tr>
             ${company ? `<tr><td style="padding: 8px 0; font-weight: 600;">Company</td><td style="padding: 8px 0;">${company}</td></tr>` : ''}
+            ${phone ? `<tr><td style="padding: 8px 0; font-weight: 600;">Phone</td><td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #007AFF;">${phone}</a></td></tr>` : ''}
             ${message ? `<tr><td style="padding: 8px 0; font-weight: 600; vertical-align: top;">Message</td><td style="padding: 8px 0;">${message.replace(/\n/g, '<br/>')}</td></tr>` : ''}
           </table>
         </div>
