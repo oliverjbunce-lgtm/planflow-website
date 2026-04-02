@@ -8,7 +8,7 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   return (
-    <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 bg-white">
+    <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-24 pb-12 bg-white">
       <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#0A84FF]/4 blur-[120px] pointer-events-none" />
       <motion.div style={{ y, opacity }} className="relative text-center max-w-5xl mx-auto">
@@ -28,7 +28,7 @@ export default function Hero() {
           <span className="text-[#0A84FF]">quote building supplies.</span>
         </motion.h1>
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }} className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
-          AI reads your builders’ floor plans. Every door, window, and fitting — detected, counted, and turned into a quote request. Automatically.
+          AI reads your builders' floor plans. Every door, window, and fitting — detected, counted, and turned into a quote request. Automatically.
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="#contact" className="inline-flex items-center gap-2 bg-[#0A84FF] text-white font-bold px-8 py-4 rounded-2xl text-lg hover:bg-[#0066CC] transition-all hover:-translate-y-0.5 shadow-xl shadow-[#0A84FF]/20">
