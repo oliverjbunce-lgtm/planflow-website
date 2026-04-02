@@ -56,8 +56,8 @@ export default function AISection() {
 
   return (
     <div ref={containerRef} style={{ height: '400vh' }} id="ai-section">
-      <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}
-           className="bg-white flex flex-col items-center justify-center px-6">
+      <div style={{ position: 'sticky', top: '64px', height: 'calc(100vh - 64px)', overflow: 'hidden' }}
+           className="bg-white flex flex-col items-center justify-center px-6 pt-4 pb-4">
 
         {/* Heading */}
         <motion.div style={{ opacity: headingOpacity, y: headingY }} className="text-center mb-10">
