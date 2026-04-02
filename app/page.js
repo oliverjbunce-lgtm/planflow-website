@@ -1,25 +1,25 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import PlatformPreview from '@/components/PlatformPreview'
+import Problem from '@/components/Problem'
+import AISection from '@/components/AISection'
 import Features from '@/components/Features'
-import Integrations from '@/components/Integrations'
 import HowItWorks from '@/components/HowItWorks'
-import Stats from '@/components/Stats'
-import CTA from '@/components/CTA'
+import Integrations from '@/components/Integrations'
+import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
-export default function Home() {
+export default function Page() {
   return (
     <>
       <Nav />
       <main>
         <Hero />
-        <PlatformPreview />
+        <Problem />
+        <AISection />
         <Features />
-        <Integrations />
         <HowItWorks />
-        <Stats />
-        <CTA />
+        <Integrations />
+        <ContactForm />
       </main>
       <Footer />
     </>
