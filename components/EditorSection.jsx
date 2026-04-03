@@ -1,21 +1,19 @@
-'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+\'use client\'
+import { useState } from \'react\'
+import { motion } from \'framer-motion\'
 
 const INITIAL_ITEMS = [
-  { id: 1, type: 'Hinged Door',    qty: 3, conf: 97, color: '#0A84FF', unitPrice: 285 },
-  { id: 2, type: 'Cavity Slider',  qty: 2, conf: 94, color: '#16a34a', unitPrice: 420 },
-  { id: 3, type: 'Bifold Door',    qty: 1, conf: 91, color: '#9333ea', unitPrice: 680 },
-  { id: 4, type: 'Sliding Window', qty: 3, conf: 96, color: '#06b6d4', unitPrice: 310 },
-  { id: 5, type: 'Awning Window',  qty: 3, conf: 93, color: '#f97316', unitPrice: 290 },
-  { id: 6, type: 'Fixed Window',   qty: 1, conf: 94, color: '#ec4899', unitPrice: 195 },
+  { id: 1, type: \'Hinged Door\',    qty: 3, conf: 97, color: \'#0A84FF\', unitPrice: 285 },
+  { id: 2, type: \'Cavity Slider\',  qty: 2, conf: 94, color: \'#16a34a\', unitPrice: 420 },
+  { id: 3, type: \'Bifold Door\',    qty: 1, conf: 91, color: \'#9333ea\', unitPrice: 680 },
+  { id: 4, type: \'Sliding Window\', qty: 3, conf: 96, color: \'#06b6d4\', unitPrice: 310 },
+  { id: 5, type: \'Awning Window\',  qty: 3, conf: 93, color: \'#f97316\', unitPrice: 290 },
+  { id: 6, type: \'Fixed Window\',   qty: 1, conf: 94, color: \'#ec4899\', unitPrice: 195 },
 ]
 
 export default function EditorSection() {
-  const [activeTab, setActiveTab] = useState('detections')
+  const [activeTab, setActiveTab] = useState(\'detections\')
   const [items, setItems] = useState(INITIAL_ITEMS)
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   const updateQty = (id, delta) => {
     setItems(prev => prev.map(item =>
@@ -26,44 +24,45 @@ export default function EditorSection() {
   const subtotal = items.reduce((sum, item) => sum + item.qty * item.unitPrice, 0)
   const gst = subtotal * 0.15
   const total = subtotal + gst
-
-  const fmt = (n) => `$${n.toLocaleString('en-NZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+  const fmt = (n) => `$${n.toLocaleString(\'en-NZ\', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-[#f8fafc]" id="editor">
+    <section className="py-32 px-6 bg-[#f8fafc]" id="editor">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <div className="text-center mb-16">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-[#0A84FF] text-sm font-semibold tracking-[0.2em] uppercase mb-4"
           >
             Quote Editor
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, filter: 'blur(8px)' }}
-            animate={inView ? { opacity: 1, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="text-5xl md:text-6xl font-black tracking-[-0.03em] text-[#0a0a0a] mb-4"
           >
             Review, edit, and<br />quote in one place.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
             className="text-gray-400 text-lg max-w-lg mx-auto"
           >
             AI does the counting. You stay in control.
           </motion.p>
         </div>
 
-        {/* Browser mockup */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
           className="bg-white rounded-3xl border border-gray-100 shadow-2xl overflow-hidden"
         >
           {/* Browser chrome */}
@@ -97,15 +96,13 @@ export default function EditorSection() {
 
           {/* Tabs */}
           <div className="border-b border-gray-100 px-8">
-            <div className="flex gap-0">
-              {['detections', 'quote', 'history'].map(tab => (
+            <div className="flex">
+              {[\'detections\', \'quote\', \'history\'].map(tab => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-5 py-3.5 text-sm font-semibold border-b-2 transition-all capitalize ${
-                    activeTab === tab
-                      ? 'border-[#0A84FF] text-[#0A84FF]'
-                      : 'border-transparent text-gray-400 hover:text-gray-600'
+                    activeTab === tab ? \'border-[#0A84FF] text-[#0A84FF]\' : \'border-transparent text-gray-400 hover:text-gray-600\'
                   }`}
                 >
                   {tab}
@@ -116,9 +113,8 @@ export default function EditorSection() {
 
           {/* Content */}
           <div className="grid lg:grid-cols-5 min-h-[420px]">
-            {/* Left panel */}
             <div className="lg:col-span-3 p-8 border-r border-gray-100">
-              {activeTab === 'detections' && (
+              {activeTab === \'detections\' && (
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <h3 className="text-sm font-bold text-[#0a0a0a]">Detected Components</h3>
@@ -136,15 +132,9 @@ export default function EditorSection() {
                         </div>
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-1 py-1">
-                            <button
-                              onClick={() => updateQty(item.id, -1)}
-                              className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#0a0a0a] transition-colors text-base leading-none rounded"
-                            >−</button>
+                            <button onClick={() => updateQty(item.id, -1)} className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#0a0a0a] transition-colors text-base leading-none rounded">−</button>
                             <span className="text-sm font-bold text-[#0a0a0a] tabular-nums w-6 text-center">{item.qty}</span>
-                            <button
-                              onClick={() => updateQty(item.id, 1)}
-                              className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#0a0a0a] transition-colors text-base leading-none rounded"
-                            >+</button>
+                            <button onClick={() => updateQty(item.id, 1)} className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-[#0a0a0a] transition-colors text-base leading-none rounded">+</button>
                           </div>
                           <span className="text-sm font-bold text-[#0a0a0a] tabular-nums w-20 text-right">{fmt(item.qty * item.unitPrice)}</span>
                         </div>
@@ -157,18 +147,18 @@ export default function EditorSection() {
                   </div>
                 </div>
               )}
-              {activeTab === 'quote' && (
+              {activeTab === \'quote\' && (
                 <div className="text-center py-12 text-gray-300">
                   <svg className="mx-auto mb-3" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                   <p className="text-sm">Quote preview visible on right</p>
                 </div>
               )}
-              {activeTab === 'history' && (
-                <div className="space-y-3">
+              {activeTab === \'history\' && (
+                <div className="space-y-3 pt-2">
                   {[
-                    { action: 'Quote request received', time: '9:14am', by: 'Acme Construction Ltd' },
-                    { action: 'AI analysis complete', time: '9:14am', by: 'Quoflow AI · 4.8s' },
-                    { action: 'Assigned for review', time: '9:15am', by: 'System' },
+                    { action: \'Quote request received\', time: \'9:14am\', by: \'Acme Construction Ltd\' },
+                    { action: \'AI analysis complete\', time: \'9:14am\', by: \'Quoflow AI · 4.8s\' },
+                    { action: \'Assigned for review\', time: \'9:15am\', by: \'System\' },
                   ].map((h, i) => (
                     <div key={i} className="flex gap-3">
                       <div className="w-2 h-2 rounded-full bg-[#0A84FF] mt-1.5 shrink-0" />
@@ -182,7 +172,6 @@ export default function EditorSection() {
               )}
             </div>
 
-            {/* Right panel — Quote preview */}
             <div className="lg:col-span-2 p-8 bg-gray-50/50">
               <div className="flex items-center justify-between mb-5">
                 <h3 className="text-sm font-bold text-[#0a0a0a]">Quote Preview</h3>
