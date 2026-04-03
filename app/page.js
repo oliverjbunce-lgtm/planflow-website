@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import Problem from '@/components/Problem'
 import AISection from '@/components/AISection'
 import Features from '@/components/Features'
+import EditorSection from '@/components/EditorSection'
 import HowItWorks from '@/components/HowItWorks'
 import Integrations from '@/components/Integrations'
 import ContactForm from '@/components/ContactForm'
@@ -18,6 +19,7 @@ export default function Page() {
         <Problem />
         <AISection />
         <Features />
+        <EditorSection />
         <HowItWorks />
         <Integrations />
         <ContactForm />
